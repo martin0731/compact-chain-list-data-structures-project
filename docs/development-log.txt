@@ -1,0 +1,72 @@
+Proyecto Estructuras de datos
+
+Estudiante: Martín Estrada Agudelo.
+
+20/10/25 - se definió que la CCL iba a ser implementada con estructuras circuladas doblemente enlazadas circulares
+26/10/25 - se avanzó en el archivo .h de la CompactChainList. 
+29/10/25 - se trabajó en las operaciones constructuras de la CCL.
+30/10/25 - se intentó trabajar en la operación set, pero la dejé para depués por si podía llamar alguna otra operación modificadora
+           dentro de esta.
+31/10/25 - se trabajó en las operaciones push_back y push_front sin ningún inconveniente hasta ahora.
+01/11/25 - se trabajó en la operación removeFirstOcurrence, hasta ahora ninguna modificación para buscar mejor complejidad en la misma.
+03/11/25 - se pulió el archivo pdf con la explicación de cada operación y su precondición y postcondición para entrega de avance.
+           revisar la operación de removeFirstOcurrence, ya que comparar puntero eliminado puede causar comportamiento indefinido.
+04/11/25 - se trabajó en la operación de eliminación removeAllOcurrences, hasta ahora no se ha visto la posibilidad de una mejora
+            en su complejidad, se espera seguir trabajando en la última operación de eliminación.
+05/11/25 - se intentó trabajar en la operación removeBlockPosition pero no se tuvo resultado aún. 
+09/11/25 - se terminó la operación de remover el bloque con una posición.
+20/11/25 - se trabajó en la operación modifyAllOcurrences, se tiene pendiente por revisarla para mejorar su complejidad.
+23/11/25 - se trabajó en la sobrecarga del operador == y el operador <, tuve dificultades en el último al analizar el caso de llegar
+           al final de la lista, pero lo pude completar.
+24/11/25 - se trabajó en la sobrecarga de los últimos operadores que faltaban, me salió un error en el operador + porque me tocó
+           llamar a la función getLexicographicFunction pero no la había implementado todavía, el operador [] sin problemas.
+25/11/25 - Quise implementar getLexicographicFusion con una función auxiliar appendRemainingBlocks pero me surgió el primer error 
+           porque la función necesitaba ser declarada como static para poder ser llamada sin una instancia específica del objeto. 
+           Despúes al llamar esta funxión en la sobrecarga del operador [] apareció el error no suitable copy constructor porque el
+           constructor de copia estaba declarado como CompactChainList(CompactChainList &other) sin const, y cuando una función 
+           retorna un objeto por valor, el compilador invoca el constructor de copia para crear la copia retornada, y necesita 
+           recibir una referencia constante (const T&) para garantizar que el objeto original no será modificado y permitir copiarlo
+           temporalmente. La solución fue agregar static a la función auxiliar y ponerle const a la firma del constructor de copia.
+
+           Además, moví el código de las operaciones auxiliares del .h al .cpp para tener un archivo más limpio y ordenado y lo separé
+           con una linea de #### para que se viera más organizado.
+
+           Ahora avancé un poco con la operación analizadora de getConsecutiveOcurrences, tenía duda si implementarla con listas o vectores
+           pero al analizar la complejidad de ambas tienen la misma, entonces lo dejé con listas para practicar el uso de iteradores, la
+           complejidad es T(n) E O (N * M) siendo N el tamaño de la CCL expandida y M el tamaño de la subsecuencia.
+
+26/11/25 - Al final decidí implementar la función con vectores, porque para acceder a una posición aleatoria como puedo ir saltando
+           posiciones la complejidad para acceder es O(1), además trabajaré en la próxima función de getOcurrences con la misma
+           estrategia.
+
+           La trabajé con la misma lógica que la anterior pero puede saltar posiciones para ver cuantas veces aparece la subsecuencia 
+           en la CCL. 
+
+           Ya implementé las operaciones analizadoras con la misma estrategia de vectores y expandirla, ahora hice el análisis de 
+           para ver cómo implemento las op de modificar e insertar, pero me doy cuenta que si las expando no sería eficiente, por lo 
+           que pensé una operación auxiliar para poder reutilizarla de encontrar la posición global y su respectiva pos local de un 
+           nodo.
+
+           Se implementó las operaciones modificadoras de insert y set, costó un poco implementarlas porque tocó pensar los casos de
+           cada una de ellas y se llamaron algunas funciones ya implementadas como la función auxiliar que creamos anteriormente y 
+           otras como push_back , push_front. Para evitar volverlas a escribir y que el código se volviera más extenso. 
+           
+           Pendiente por analizar la complejidad de las funciones.
+
+           Se implementó de ordenar el vector de la CCL, solo es agregarle un sort porque ya habíamos hecho la sobrecarga del operador
+           <.
+
+27/11/25 - Quise implementar mi función adicional, la pensé con el nombre de summary, y lo que hace es devolver un mapa con cuya clave 
+           es el elemento de la CCL, y el valor es la longitud de los bloques en los que aparece en toda la CCL, esta operación lo que
+           hace es facilitar haciendo un resumen de cuantos bloques tiene cada elemento y cuantas veces aparece en cada uno.
+
+           Ya tengo que analizar la complejidad de cada una de las operaciones y ver si puedo realizar unos cambios buscando una 
+           mejoría. 
+
+           Hice un ajuste en la operación de la función lexicográfica porque lo estaba haciendo con el viejo documento, entonces 
+           expandía las listas y ahí empezaba mi comparación, ahora hago la comparación uno a uno y de los bloques.
+
+28/11/25 - Se implementó la función print que el profesor puso en el discord, se hicieron ajustes a funciones y se trabajó analizando 
+           las complejidades de cada operación. Por hacer el ejercicio que el profesor dejó para la arena.
+           
+01/12/25 - Se hizo el problema de la arena y se están corrigiendo asuntos menores para la entrega final.

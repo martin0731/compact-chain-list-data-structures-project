@@ -1,0 +1,21 @@
+# Build artifacts
+*.o
+*.obj
+*.exe
+*.out
+a.out
+excusebureau
+
+# IDE and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Debug
+*.dSYM/
