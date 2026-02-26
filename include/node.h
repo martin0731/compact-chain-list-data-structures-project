@@ -6,23 +6,23 @@
 
 typedef int Element;
 
-class Node{
-  private:
-    Element val;
-    int length;
-    Node *next, *prev;
+class Node {
+private:
+  Element val;
+  int length;
+  Node *next, *prev;
 
-  public:
-    Node();
-    Node(Element, int, Node*, Node*);
-    Element getVal();
-    int getLength();
-    Node* getNext();
-    Node* getPrev();
-    void setVal(Element);
-    void setLength(int);
-    void setNext(Node*);
-    void setPrev(Node*);
+public:
+  Node();
+  Node(Element, int, Node *, Node *);
+  Element getVal();
+  int getLength();
+  Node *getNext();
+  Node *getPrev();
+  void setVal(Element);
+  void setLength(int);
+  void setNext(Node *);
+  void setPrev(Node *);
 };
 
 #endif
